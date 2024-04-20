@@ -1,0 +1,565 @@
+
+  /*CSS Reset / Normalize*/
+/*Já deixaremos o básico de reset de estilos. Caso queira adicionar mais informações
+coloque nas sessões indicadas*/
+
+:root{
+    /*Insira a variavel das outras cores inspecionando o modelo do figma*/
+    /*Se esforce para trabalhar com variáveis, é uma dica profissional valiosa*/
+    font-size: 62.5%;
+    --color-theme:#005095;
+    --cor-de-fundo: white;
+    --cor-de-link: 222.2deg 1.81% 6.33%;
+    --color-title: #005095;
+    & .dark-mode {
+    --cor-de-fundo: #020817;
+    --cor-de-link: 215 20.2% 65.1%;
+    --color-title: white;
+    color: #fff;
+        .logo .fill-blue,
+        .logo .fill-gray {
+    fill: rgb(255, 255, 255);
+        }
+    }
+}
+html {
+    scroll-behavior: smooth;
+  }
+
+  :target {
+    scroll-margin-top: .8em;
+  }
+/* Scroll bar custom */
+
+::-webkit-scrollbar {
+    width: 1.2rem;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgb(56, 109, 147); 
+    border-radius: 1rem;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-title); 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-theme); 
+  }
+
+/* DARK-MODE  */
+
+
+@media (prefers-color-scheme:dark) {
+    
+}
+/* ANIMATIONS */
+.scroller[data-animated="true"] .scroller__inner {
+    width: max-content;
+    flex-wrap: nowrap;
+    z-index: 10;
+    margin: 1rem 0;
+
+    animation: scrolling linear;
+    animation-timeline: scroll(root);
+}
+.scroller[data-direction="right"] .scroller__inner {
+   animation-direction: reverse;
+}
+@keyframes scrolling {
+    to {
+        transform: translate(calc(-50% - 0.5rem));
+    }
+}
+
+
+    article > img {
+        scale: .8; 
+        opacity: 0;
+        animation: fade-in linear forwards;
+        animation-timeline: view(45%);
+        animation-duration: 2s;
+    }
+
+    @keyframes fade-in {
+        to { scale: 1; opacity: 1;}
+    }
+
+
+.scroll-watcher {
+    height: 1rem;
+    position: fixed;
+    top: 0;
+    background-color: var(--color-theme);
+    width: 100%;
+    scale: 0 1;
+    transform-origin:left ;
+    animation: scroll-watcher linear;
+    animation-timeline: scroll() ;
+}
+@keyframes scroll-watcher {
+    to { scale: 1 1; }
+}
+
+
+body {
+    
+    box-sizing: border-box;
+    background-color: var(--cor-de-fundo) ;
+    font-family: 'Raleway';
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    font-size: 1.8rem;
+}
+ol, ul,li {
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color: var(--cor-de-link);
+}
+
+/*Neste desafio, gostariamos que praticassem a metodologia BEM, caso seintam a vontade 
+de utiliza-la. 
+
+Mas o que é o BEM?
+
+BEM (Block, Element, Modifier) ​​é uma abordagem baseada em componentes para o desenvolvimento
+web. A ideia por trás disso é dividir a interface do usuário em blocos independentes.
+Isso torna o desenvolvimento de interface fácil e rápido, mesmo com uma interface
+de usuário complexa, e permite a reutilização de código existente sem copiar e colar.
+
+Link da documentação oficial!
+https://en.bem.info/methodology/quick-start/*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    --webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.all {
+    display: block;
+}
+
+.container {
+    max-width: 1136px;    
+    display: block;
+    margin-left: auto;
+    margin-right: auto;        
+}
+.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar {       
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;    
+    z-index:18 ;
+    background-color: var(--cor-de-fundo);
+    padding: 1rem;
+    
+}
+
+/*Sessão Menu*/
+
+section.menu{   
+    z-index: 15;
+
+
+}
+.menu__list {
+    display: flex;
+    gap: 2rem;
+}
+
+.hero,
+.about,
+.projects,
+.formcontato,
+.hobbies,
+.skills,
+.academic,
+.experience {
+    /* display: flex;
+    flex-direction: column; */
+    margin: 12rem 0;    
+}
+section h3[class$="__title"]  {
+    color: var(--color-title);
+    font-size: 2.8rem;
+    font-weight: 900;
+    margin: 2rem 0;
+}
+
+.projects__articles {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.projects__articles article {
+    width: 35rem;
+    height: 26rem;
+}    
+/*Sessão Title*/
+
+section.title{
+    /* display: flex; */
+    margin: 20rem 0;
+}
+
+.title__div {
+    display: flex;
+    justify-content: space-between;
+}
+.title__container {
+    width: 55%;
+}
+
+.title__bio {
+    font-size: 6rem;
+    font-weight: 900;
+}
+.title__network {
+    display: flex;
+    gap: 3rem;
+    font-size: 1.8rem;
+}
+
+.title__subsection {
+    font-size: 4rem;
+    font-weight: 600;
+    margin: 2rem 0;
+    color: #2196F3;
+}
+.title__profile {
+    width: 30rem;
+    height: max-content;
+}
+/*Sessão About*/
+
+section.about{
+
+}
+
+/*Sessão Hobbies*/
+
+section.hobbies{
+     
+}
+
+.hobbies__line {
+    display: flex;
+    gap: 3rem;
+}
+
+.hobbies__box ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+/*Sessão skills*/
+@keyframes animateSlider {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+.animateSlider {
+    animation-direction: normal;
+    /* gap: 1rem; */
+    animation: 8s animateSlider infinite linear;
+}
+section.skills{
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+}
+.skills__title {
+    z-index: 3;
+}
+.skiils__logos {
+    display: flex;
+    flex-direction: row;
+}
+.skills__img {
+  
+    filter: grayscale(100%);
+    opacity: .8;
+}
+.skills::before,
+.skills::after {
+    position: absolute;
+    top: 0;
+    width: 200px;
+    height: 100%;
+    content: '';
+    z-index: 12;
+}
+
+.dark-mode .skills::before {
+    left: 0;    
+    background: linear-gradient(to left, rgba(255, 255, 255, 0), var(--cor-de-fundo));
+}
+
+.dark-mode .skills::after {
+    right: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), var(--cor-de-fundo));
+}
+.skills::before {
+    left: 0;    
+    background: linear-gradient(to left, rgba(255, 255, 255, 0), white);
+}
+
+.skills::after {
+    right: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), white);
+}
+.skills__line {
+    display: flex;
+    white-space: nowrap;
+    
+}
+.skills__box {
+    margin: 0 2rem;
+    transition: transform .3s;
+    border-radius: 1.3rem;
+    width: 9rem;
+    padding: .5rem;
+}
+.skills__box ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0rem;
+    align-items: center;
+}
+.skills__box:hover {
+    margin: 0 1rem;
+    transform: scale(1.1);
+}
+.skills__box:hover .skills__img{
+    filter: grayscale(0%);
+    opacity: 1;
+}
+.skills__name {
+    width: max-content;
+    font-size: 1.6rem;
+}
+.dark-mode .skills__name {
+    color: var(--color-theme);
+}
+.skills__img img {
+    height: 2.2rem;
+    width: auto;
+}
+.skills__title {
+    z-index: 13;
+}
+
+
+/* Experiência Acadêmica*/
+
+section.academic {
+    
+}
+
+.academic__courses {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: space-between;
+}
+
+/* experiência*/
+
+section.experience{
+    
+}
+.experience__container {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: space-between;
+}
+/*Contato*/
+
+section.formcontato{
+
+}
+
+/*footeer*/
+
+section.footer{
+   
+}
+
+/* Chegou a hora de se desafiar com a responsividade, 
+utilize como referência os breakpoints @media abaixo*/
+
+/*Tablet*/
+@media (min-width: 768px) {
+
+/* Menu */
+
+/*title*/
+
+/*Skills*/
+
+/*Hobbies*/
+
+/*Experiências acadêmicas*/
+
+/*Expeirência profissional*/
+
+}
+
+/*Mobile*/
+@media (min-width: 425px) {
+
+/*Menu*/
+
+/*Titulo*/
+
+/*Sessão sobre*/
+
+/*Skills*/
+
+/*Hobbies*/
+ 
+/*Formação Acadêmica*/
+
+/*Experiência Profissional*/
+
+ /*Contato*/
+
+/*Footer*/
+
+}
+
+
+.logo {
+    width: 180px; 
+}
+
+.logo .fill-blue {
+    fill: #005095;
+}
+
+.logo {
+    .fill-blue {
+        fill: #005095;
+    }
+}
+.logo .fill-gray {
+    fill: #414141; 
+}
+
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #005095;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  .dark-mode .slider:before {
+    background-color: #0b2b45;
+    
+  }
+  
+  input:checked + .slider {
+    background-color: #ccc;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+  div#contato {
+    display: flex;
+    justify-content: space-between;
+}
+
+.formcontato__text,
+.formcontato__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+
+.formcontato {
+    display: none;
+}
+
+.formcontato__input,
+.formcontato__textarea {
+    margin: 1rem;
+    background-color: #f1f1f1;
+    padding: 1.3rem;
+}
+
+button.formcontato__botao {
+    display: flex;
+    background: red;
+    margin: 1rem;
+    padding: 1.4rem;
+}
